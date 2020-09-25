@@ -54,7 +54,7 @@ const Cart = () => {
                                         >-</span>
 
                                     </td>
-                                    <td className="my-brown">${ item.price * item.quantity }</td>
+                                    <td className="my-brown" colSpan="2">${ item.price * item.quantity }</td>
                                 </tr>
                             );
                         })
