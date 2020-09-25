@@ -1,17 +1,45 @@
+
+
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import ScrollToTop from './components/ScrollToTop';
+import Menu from './components/Menu';
+import Cart from './components/Cart';
+import App from './components/App';
+
+import foodData from './dataFood';
+import beverageData from './dataBeverage';
+
+import CartContextProvider from './contexts/CartContext';
+
+import './style.scss';
+
+
+
+ReactDOM.render( 
+
+    <BrowserRouter>
+
+        <ScrollToTop />
+
+        <App>
+            <CartContextProvider>
+                <Switch>
+
+                    <Route path="/food" component={ () => <Menu title="Food" menuData={ foodData } /> } exact />
+                    <Route path="/beverage" component={ () => <Menu title="Beverage" menuData={ beverageData } /> } exact />
+                    <Route path="/cart" component={ Cart } exact />
+                    <Route component={ () => <Menu menuData={ foodData } /> } />
+
+                </Switch>
+            </CartContextProvider>
+        </App>
+    </BrowserRouter>, 
+
+    document.querySelector( '#root' )
+    
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

@@ -1,0 +1,25 @@
+
+
+
+// GLOBAL COLOR VARS
+$color-brown: #7C6F54;
+$color-gold: #A69847;
+$color-gold-light: #C0B452;
+$color-cream: #F7E8B4;
+
+
+a { 
+    color: $color-brown;
+     
+    &:hover { color: $color-gold; }
+}
+
+.my-brown { color: $color-brown !important; }
+.my-gold { color: $color-gold !important; }
+
+.my-gold-light-bg { 
+
+    background-color: $color-gold-light !important; 
+
+    &:hover { background-color: $color-gold !important; }
+}
