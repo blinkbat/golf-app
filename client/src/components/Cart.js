@@ -20,6 +20,8 @@ const Cart = () => {
         setLocation 
     } = useContext( CartContext );
 
+    const locations = [ 'Bev Cart', 'The Turn', 'Main House' ];
+
     return(
         <div>
             <h1 className="ui header center aligned my-brown">Cart</h1>
@@ -87,24 +89,27 @@ const Cart = () => {
                     <tr>
                         <th className="my-brown">Select Pickup Zone:</th>
                         <th colSpan="2">
-                            <button 
-                                className="ui button small primary my-gold-light-bg"
-                                onClick={ () => setLocation( 'Bev Cart' ) }
-                            >
-                                Bev Cart
-                            </button>&nbsp;
-                            <button 
-                                className="ui button small primary my-gold-light-bg"
-                                onClick={ () => setLocation( 'The Turn' ) }
-                            >
-                                The Turn
-                            </button>&nbsp;
-                            <button 
-                                className="ui button small primary my-gold-light-bg"
-                                onClick={ () => setLocation( 'Main House' ) }
-                            >
-                                Main House
-                            </button>
+
+                        { locations.map( loc => {
+
+                            return location === loc ? 
+                                <button 
+                                    className="ui button small primary my-gold-light-bg"
+                                    style={{ marginRight: '10px' }}
+                                    onClick={ () => setLocation( loc ) }
+                                >
+                                    { location }
+                                </button>
+                                :
+                                <button 
+                                    className="ui button small primary my-brown-bg"
+                                    style={{ marginRight: '10px' }}
+                                    onClick={ () => setLocation( loc ) }
+                                >
+                                    { loc }
+                                </button>
+                        }) }
+
                         </th>
                         <th colSpan="2" className="my-brown">{ location }</th>
                     </tr>
@@ -116,11 +121,17 @@ const Cart = () => {
                             ${ amount }
                         </th>
                         <th>
+
+                        { location ?
                             <Link to="/payment-form" style={{ width: '100%' }}>
                                 <button className="ui button small primary my-gold-light-bg">
                                     Order
                                 </button>
                             </Link>
+                            : <button className="ui button small primary my-gold-light-bg" disabled>
+                                Order
+                            </button>
+                        }
                         </th>
                     </tr></tfoot>
 

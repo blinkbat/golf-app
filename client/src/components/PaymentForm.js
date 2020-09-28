@@ -130,7 +130,7 @@ const PaymentForm = () => {
                 </div>
 
                 <Link to="/cart">
-                    <h4 style={{ textAlign: 'center' }}>Back to Cart &rarr;</h4>
+                    <h3 style={{ textAlign: 'center', padding: '30px' }}>Back to Cart &rarr;</h3>
                 </Link>
 
             </div>
