@@ -67,6 +67,10 @@ app.post( '/process-payment', async ( req, res ) => {
     }
 });
 
+app.use( function( req, res ) {
+    res.sendFile( path.join( __dirname, "/client/build/index.html" ) );
+});
+
 app.listen(
     port,
     () => console.log( `listening on - http://localhost:${port}` )
