@@ -11,7 +11,14 @@ import { CartContext } from '../contexts/CartContext';
 
 const Cart = () => {
 
-    const { cart, addItem, removeItem, amount } = useContext( CartContext );
+    const { 
+        cart, 
+        addItem, 
+        removeItem, 
+        amount, 
+        location, 
+        setLocation 
+    } = useContext( CartContext );
 
     return(
         <div>
@@ -78,17 +85,28 @@ const Cart = () => {
                     <tfoot className="full-width">
                     
                     <tr>
-                        <th colSpan="5" className="my-brown">Select Pickup Zone:&nbsp;
-                            <button className="ui button small primary my-gold-light-bg">
+                        <th className="my-brown">Select Pickup Zone:</th>
+                        <th colSpan="2">
+                            <button 
+                                className="ui button small primary my-gold-light-bg"
+                                onClick={ () => setLocation( 'Bev Cart' ) }
+                            >
                                 Bev Cart
                             </button>&nbsp;
-                            <button className="ui button small primary my-gold-light-bg">
+                            <button 
+                                className="ui button small primary my-gold-light-bg"
+                                onClick={ () => setLocation( 'The Turn' ) }
+                            >
                                 The Turn
                             </button>&nbsp;
-                            <button className="ui button small primary my-gold-light-bg">
+                            <button 
+                                className="ui button small primary my-gold-light-bg"
+                                onClick={ () => setLocation( 'Main House' ) }
+                            >
                                 Main House
                             </button>
                         </th>
+                        <th colSpan="2" className="my-brown">{ location }</th>
                     </tr>
 
                     <tr>

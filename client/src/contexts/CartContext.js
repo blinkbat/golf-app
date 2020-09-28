@@ -17,6 +17,8 @@ const CartContextProvider = props => {
 
     const [ amount, setAmount ] = useState( 0 );
 
+    const [ location, setLocation ] = useState( '' );
+
 
     const setTotal = cartArr => {
 
@@ -73,7 +75,7 @@ const CartContextProvider = props => {
     };
 
     return (
-        <CartContext.Provider value={{ cart, addItem, removeItem, amount }}>
+        <CartContext.Provider value={{ cart, addItem, removeItem, amount, location, setLocation }}>
             { props.children }            
         </CartContext.Provider>  
     );
