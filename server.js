@@ -9,7 +9,7 @@ const crypto = require( 'crypto' );
 const squareConnect = require( 'square-connect' );
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // Set the Access Token
 const accessToken = process.env.SQUARE_ACCESS_TOKEN;
