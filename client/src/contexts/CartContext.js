@@ -15,7 +15,18 @@ const CartContextProvider = props => {
 
     const [ cart, setCart ] = useState( [] );
 
+    const [ amount, setAmount ] = useState( 0 );
 
+
+    const setTotal = cartArr => {
+
+        const total = cartArr.reduce( 
+            ( acc, curr ) => acc + ( curr.price * curr.quantity ), 0
+        );
+
+        setAmount( total );
+
+    };
 
     const addItem = item => { 
 
@@ -30,6 +41,7 @@ const CartContextProvider = props => {
             const newCart = cart.map( cartItem => Object.assign( {}, cartItem ) );
 
             setCart( newCart );
+            setTotal( newCart );
 
         } else { 
         
@@ -38,6 +50,7 @@ const CartContextProvider = props => {
             const newCart = [ newItem, ...cart ];
         
             setCart( newCart );
+            setTotal( newCart );
         
         }
 
@@ -53,13 +66,14 @@ const CartContextProvider = props => {
         const cartQuantity = cart.filter( cartItem => cartItem.quantity );
         
         setCart( cartQuantity );
+        setTotal( cartQuantity );
 
         console.log( cart );
 
     };
 
     return (
-        <CartContext.Provider value={{ cart, addItem, removeItem }}>
+        <CartContext.Provider value={{ cart, addItem, removeItem, amount }}>
             { props.children }            
         </CartContext.Provider>  
     );
