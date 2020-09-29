@@ -71,4 +71,4 @@ app.use( function( req, res ) {
     res.sendFile( path.join( __dirname, "/client/build/index.html" ) );
 });
 
-app.listen( PORT, () => console.log( `listening on - http://localhost:${port}` ) );
+app.listen( PORT, () => console.log( `listening on - http://localhost:${PORT}` ) );
