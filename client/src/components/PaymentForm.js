@@ -39,9 +39,7 @@ const PaymentForm = () => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                nonce: nonce
-            })
+            body: JSON.stringify({ nonce })
         })
         .catch( err => {
 
@@ -123,11 +121,11 @@ const PaymentForm = () => {
                     
                 </SquarePaymentForm>
 
-                <div className="sq-error-message">
+                <ul className="sq-error-message">
                     { errorMessages.map( errorMessage =>
                         <li key={`sq-error-${ errorMessage }`}>{ errorMessage }</li>
                     ) }
-                </div>
+                </ul>
 
                 <Link to="/cart">
                     <h3 style={{ textAlign: 'center', padding: '30px' }}>Back to Cart &rarr;</h3>

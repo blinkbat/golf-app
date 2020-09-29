@@ -9,10 +9,10 @@ const crypto = require( 'crypto' );
 const squareConnect = require( 'square-connect' );
 
 const app = express();
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 // Set the Access Token
-const accessToken = process.env.SQUARE_ACCESS_TOKEN;
+const ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN;
 
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded({ extended: false }) );
@@ -28,7 +28,7 @@ const defaultClient = squareConnect.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: oauth2
 const oauth2 = defaultClient.authentications[ 'oauth2' ];
-oauth2.accessToken = accessToken;
+oauth2.accessToken = ACCESS_TOKEN;
 
 // Set 'basePath' to switch between sandbox env and production env
 // sandbox: https://connect.squareupsandbox.com
@@ -71,7 +71,4 @@ app.use( function( req, res ) {
     res.sendFile( path.join( __dirname, "/client/build/index.html" ) );
 });
 
-app.listen(
-    port,
-    () => console.log( `listening on - http://localhost:${port}` )
-);
+app.listen( PORT, () => console.log( `listening on - http://localhost:${port}` ) );
